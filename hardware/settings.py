@@ -23,8 +23,8 @@
 import os
 import redis
 import string
-from ConfigParser import RawConfigParser
-from cStringIO import StringIO
+from configparser import RawConfigParser
+from io import StringIO
 from datetime import timedelta
 from psutil import disk_usage
 from psutil import net_if_addrs
@@ -33,7 +33,7 @@ from django.utils.crypto import get_random_string
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_CHARS = string.letters + string.digits
+SECRET_CHARS = string.ascii_letters + string.digits
 
 SECRET_FILE = os.path.join(BASE_DIR, '.secret_key')
 try:
