@@ -35,7 +35,7 @@ B58CHARS = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 
 def b58decode(value, length):
     b58base = len(B58CHARS)
-    long_value = 0L
+    long_value = 0
     for (i, c) in enumerate(value[::-1]):
         long_value += B58CHARS.find(c) * (b58base**i)
     result = ''
@@ -92,7 +92,7 @@ class BitcoinAddress(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
-    site = models.OneToOneField(Site)
+    site = models.OneToOneField(Site, on_delete=models.CASCADE)
     bitcoin_address = models.CharField(max_length=35, unique=True, blank=True,
                                        validators=[validate_bitcoin_address])
 
@@ -112,5 +112,5 @@ class Bandwidth(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
-    site = models.OneToOneField(Site)
+    site = models.OneToOneField(Site, on_delete=models.CASCADE)
     max_uplink = models.PositiveIntegerField(default=0)
