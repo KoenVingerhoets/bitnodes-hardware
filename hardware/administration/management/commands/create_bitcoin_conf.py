@@ -55,7 +55,7 @@ def create_bitcoin_conf():
         f.write(conf)
     print('{} created'.format(settings.BITCOIN_CONF))
     try:
-        os.chmod(settings.BITCOIN_CONF, 0600)
+        os.chmod(settings.BITCOIN_CONF, 600)
     except OSError as err:
         pass
 
